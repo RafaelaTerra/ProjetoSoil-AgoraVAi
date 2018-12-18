@@ -33,12 +33,12 @@ class NewAnalyzeForm extends Component {
                     <Field name='id_client' type="hidden" component={labelAndInput} readOnly={readOnly}
                         cols='0' />
                 </div>
-                    {/* <button className='btn btn-success' onClick={() => this.props.showHistory(an)}>
+                {/*<button className='btn btn-success' onClick={() => this.props.showHistory(an)}>
                         <th>Avanço</th>
                         </button>
                     <button className='btn btn-danger' onClick={() => this.props.showHistory(an)}>
                         <th>Reverso</th>
-                    </button>  */}     
+                    </button>*/}          
                 <div className='box-footer'>
                     <button type='submit' className={`btn btn-${this.props.submitClass}`}>
                         {this.props.submitLabel}

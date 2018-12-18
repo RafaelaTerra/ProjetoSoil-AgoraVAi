@@ -10,6 +10,7 @@ class AnalyzeListHistory extends Component {
 
         console.log("AnalyzeListHistory",listHistory)
         return listHistory.map(x => 
+                
             <tr key={x._id}>
                 <td>{x.analyzeCreatedAT}</td>
                 <td>{x.parameter1}</td>
@@ -17,12 +18,26 @@ class AnalyzeListHistory extends Component {
                 <td>{x.parameter3}</td>
                 <td>{x.parameter4}</td>
                 <td>{x.parameter5}</td>
-                <td>{x.points}</td>
                 <td>
-                    <button className='btn btn-success' onClick={() => this.props.showUpdate(x)}>
-                        <th>Configurar</th>
+                    <button className='btn btn-success' onClick={() => this.props.showUpdate(an)}>
+                    <th>Ligar</th>
                     </button>
-                    <button className='btn btn-danger' onClick={() => this.props.showDelete(x)}>
+                    <button className='btn btn-danger' onClick={() => this.props.showDelete(an)}>
+                    <th>Desligar</th>
+                    </button> 
+                </td>
+                <td>
+                    <button className='btn btn-success' onClick={() => this.props.showDelete(an)}>
+                    <th>Avanço</th>
+                    </button>
+                    <button className='btn btn-danger' onClick={() => this.props.showHistory(an)}>
+                    <th>Reverso</th>
+                    </button></td>
+                <td>
+        {/* <button className='btn btn-success' onClick={() => this.props.showUpdate(x)}>
+                        <th>Configurar</th>
+        </button>*/}
+                    <button className='btn btn-default' onClick={() => this.props.showDelete(x)}>
                         <th>Excluir</th>
                     </button>
                 </td>
@@ -31,7 +46,7 @@ class AnalyzeListHistory extends Component {
     }
 
     render() {
-
+        
         return(
             <div> 
                 <table className ='table'>
@@ -43,10 +58,12 @@ class AnalyzeListHistory extends Component {
                             <th>Seco/Molhado</th>
                             <th>P4</th>
                             <th>P5</th>
-                            <th>Classificação</th>
-                            <th className='table-actions'>Ações</th>
+                            <th>Liga/Desliga</th>
+                            <th>Sentido</th>
+                            <th className='table-actions'></th>
                         </tr>
                     </thead>
+                    
                     <tbody>
                         {this.renderRows()}
                     </tbody>
