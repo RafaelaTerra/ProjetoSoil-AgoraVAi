@@ -3,7 +3,7 @@ const moment = require('moment');
 const mongoose = restful.mongoose
 
 const analyzeSchema = new mongoose.Schema({
-    parameter1: { type: String, required: [false, "Informe o valor do parâmetro 1!"] },
+    parameter1: { type: String, required: [false, "sdfdsfdsfdsf!"] },
     parameter2: { type: String, required: [false, "Informe o valor do parâmetro 2!"] },
     parameter3: { type: String, required: [false, "Informe o valor do parâmetro 3!"] },
     parameter4: { type: String, required: [false, "Informe o valor do parâmetro 4!"] },

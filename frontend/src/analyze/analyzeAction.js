@@ -78,7 +78,7 @@ export const search = () => {  //vai buscar os serviços no backend
         const searchingName = getState().analyze.searchingName
         console.log(searchingName)
         const search = searchingName ? `&name__regex=/${searchingName}/` : ''
-        const request = axios.get(`${BASE_URL}/clients/?sort=-createdAt${search}`)
+        const request = axios.get(`${BASE_URL}/clients/?sort=-createdAt${update}`)
             .then(resp => dispatch({type: 'NAME_FETCHED', payload: resp}))
     }
 }
