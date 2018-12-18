@@ -9,7 +9,7 @@ class AnalyzeListHistory extends Component {
         const listHistory = this.props.listHistory || []
 
         console.log("AnalyzeListHistory",listHistory)
-        return listHistory.map(x => (
+        return listHistory.map(x => 
             <tr key={x._id}>
                 <td>{x.analyzeCreatedAT}</td>
                 <td>{x.parameter1}</td>
@@ -27,7 +27,7 @@ class AnalyzeListHistory extends Component {
                     </button>
                 </td>
             </tr>
-        ))
+        )
     }
 
     render() {

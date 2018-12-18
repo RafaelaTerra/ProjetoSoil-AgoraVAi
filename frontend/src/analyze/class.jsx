@@ -7,10 +7,9 @@ import ValueBox from '../common/widget/valueBox'
 export default({scale}) => (
     <Grid cols='12'>
         <fieldset>
-            <legend>Nova Análise</legend>
+            <legend>Informações do Pivô</legend>
             <Row>
-                <ValueBox cols='12 4' color='green' icon='coffee' 
-                    value={`${scale}`} text='Bebida'/>
+                
             </Row>
         </fieldset>
 

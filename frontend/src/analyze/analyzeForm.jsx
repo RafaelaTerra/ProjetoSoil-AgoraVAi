@@ -8,7 +8,7 @@ import { init } from './analyzeAction'
 import ItemList from './itemList'
 
 class AnalyzeForm extends Component {
-
+    
 
     render() {
         const { handleSubmit, readOnly} = this.props //método do redux-form

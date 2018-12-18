@@ -39,10 +39,10 @@ class Analyze extends Component {
                         <TabsHeader>
                             <TabHeader label='Listar' icon='bars' target='tabList' />
                             <TabHeader label='Cadastrar' icon='plus' target='tabCreate' />
-                            <TabHeader label='Alterar' icon='pencil' target='tabUpdate' />
+                            <TabHeader label='Configurações' icon='pencil' target='tabUpdate' />
                             <TabHeader label='Excluir' icon='trash-o' target='tabDelete' />
                             <TabHeader label='Histórico' icon='history' target='tabHistory' />
-                            <TabHeader label='Analisar' icon='bolt' target='tabNew' />
+                            <TabHeader label='Novo Pivô' icon='bolt' target='tabNew' />
                         </TabsHeader>
                         <TabsContent>
                             <TabHContent id='tabList'>
@@ -52,7 +52,7 @@ class Analyze extends Component {
                             </TabHContent>
                             <TabHContent id='tabCreate'> 
                                 <AnalyzeForm onSubmit={this.props.create}
-                                    submitLabel='Cadastrar' submitClass='primary'/> 
+                                    submitLabel='Cadastrar' submitClass='info'/> 
                             </TabHContent>
                             <TabHContent id='tabUpdate'>
                                 <Form onSubmit={this.props.showHistory}

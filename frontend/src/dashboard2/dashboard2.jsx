@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+{/*import React, { Component } from 'react'
 import axios from 'axios'
 
 import ContentHeader from '../common/template/contentHeader'
@@ -37,3 +37,7 @@ constructor(props) {
         )
     }
 }
+}
+
+ATIVIDADE EXTRA DO CURSO - BANCO
+*/}
