@@ -12,15 +12,15 @@ export default function (state = INITIAL_STATE, action) {
             return { ...state, list: action.payload.data}
         
         case 'ID_CHANGED':
-        console.log("Teste", action.payload)
+        //console.log("Teste", action.payload)
             return { ...state, id: action.payload }
 
         case 'FORM_FORMNEW':
-            console.log("FORM_FORMNEW", action.payload.id_client)
+           // console.log("FORM_FORMNEW", action.payload.id_client)
             return { ...state, form_formnew: action.payload.id_client }
 
         case 'ANALYZE__FETCHED':
-            console.log("ANALYZE__FETCHED")
+           // console.log("ANALYZE__FETCHED")
             return { ...state, listHistory: action.payload.data }
 
         default:

@@ -60,7 +60,7 @@ class Analyze extends Component {
                             </TabHContent>
                             <TabHContent id='tabDelete'>
                                 <Form onSubmit={this.props.remove} readOnly={true}
-                                submitLabel='Excluir' submitClass='danger'/>
+                                submitLabel='Excluuuir' submitClass='danger'/>
                             </TabHContent>
                             <TabHContent id='tabHistory'>
                                 <ListHistory />

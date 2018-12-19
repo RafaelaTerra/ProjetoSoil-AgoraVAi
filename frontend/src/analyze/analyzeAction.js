@@ -5,7 +5,7 @@ import { showTabs, selectTab } from '../common/tab/tabActions'
 
 
 const BASE_URL = 'http://localhost:3003/api'
-const INITIAL_VALUES = {name: "", telephone: "", city: "", propertyname: ""}//ARRUMAR.. TÁ ERRADO
+const INITIAL_VALUES = { name: "", telephone: "", city: "", propertyname: "" }//ARRUMAR.. TÁ ERRADO
 var id;
 
 // export function getList() {
@@ -29,7 +29,7 @@ export const searchAnalyze = (id_client) => {  //vai buscar os serviços no back
         console.log("searchAnalyze", id_client)
         const search = id_client ? `&id_client__regex=/${id_client}/` : ''
         const request = axios.get(`${BASE_URL}/analyzes/?sort=-createdAt${search}`)
-            .then(resp => dispatch({type: 'ANALYZE__FETCHED', payload: resp}))
+            .then(resp => dispatch({ type: 'ANALYZE__FETCHED', payload: resp }))
     }
 }
 
@@ -41,29 +41,45 @@ export function create(values) {
 
 export function update(values) {
     console.log(values)
-    return submit(values,'put')
+    return submit(values, 'put')
 }
 
 export function remove(values) {
-    return submit(values,'delete')
+    return submit(values, 'delete')
 }
 
 function submit(values, method) {
     return dispatch => {
-        console.log("Value", values)
+        console.log("Value = ", values._id)
         const id = values._id ? values._id : ''
+        console.log("id = ", id)
         const clientsOranalyzes = values.id_client ? 'analyzes' : 'clients' // PENSAR.. PENSAR..
-        console.log("clientsOranalyzes", clientsOranalyzes)
+        console.log("clientsOranalyzes = ", clientsOranalyzes)
 
         axios[method](`${BASE_URL}/${clientsOranalyzes}/${id}`, values) //executa o post e depois realiza as ações
+            .then(resp => {
+                toastr.success('Sucesso', 'Operação Realizada com Sucesso.')
+                dispatch(init())
+            })
+            .catch(e => {   //qdo o banco acusar algum erro
+                e.response.data.errors.forEach(error => toastr.error('Erro', error)) //errors é do backend..forEach percorre a matriz de erros
+            })
+    }
+}
+
+function nossoDelete(values, id_2) {
+    const id = id_2
+    const clientsOranalyzes = 'analyzes';
+    axios['delete'](`${BASE_URL}/${clientsOranalyzes}/${id}`, values) //executa o post e depois realiza as ações
         .then(resp => {
             toastr.success('Sucesso', 'Operação Realizada com Sucesso.')
             dispatch(init())
         })
         .catch(e => {   //qdo o banco acusar algum erro
+            console.log(e)
             e.response.data.errors.forEach(error => toastr.error('Erro', error)) //errors é do backend..forEach percorre a matriz de erros
         })
-    }
+        //window.location.reload()
 }
 
 /**************************************************************************************************/
@@ -79,7 +95,7 @@ export const search = () => {  //vai buscar os serviços no backend
         console.log(searchingName)
         const search = searchingName ? `&name__regex=/${searchingName}/` : ''
         const request = axios.get(`${BASE_URL}/clients/?sort=-createdAt${update}`)
-            .then(resp => dispatch({type: 'NAME_FETCHED', payload: resp}))
+            .then(resp => dispatch({ type: 'NAME_FETCHED', payload: resp }))
     }
 }
 
@@ -92,7 +108,7 @@ export const clear = () => {
 export function showUpdate(analyze) {
     return [
         console.log("showUpdate", analyze),
-        { type: 'FORM_FORMNEW', payload: analyze},
+        { type: 'FORM_FORMNEW', payload: analyze },
         showTabs('tabUpdate'),
         selectTab('tabUpdate'),
         initialize('analyzeForm', analyze) //inicializar o formulário com dados já cadastrados
@@ -100,21 +116,24 @@ export function showUpdate(analyze) {
 }
 
 export function showDelete(analyze) { //refazer, colocar o id da aba.. o código está duplicado
-    return [
-        console.log("showDelete", analyze),
-        { type: 'FORM_FORMNEW', payload: analyze},
+    nossoDelete(analyze, analyze._id)
+    window.location.reload()
+    showHistory(analyze)
+    {/*return [
+        console.log("showDelete = " + analyze._id),
+        { type: 'FORM_FORMNEW', payload: analyze },
         showTabs('tabDelete'),
         selectTab('tabDelete'),
-        initialize('analyzeForm', analyze) //inicializar o formulário com dados já cadastrados
-    ]
+    initialize('analyzeForm', analyze) //inicializar o formulário com dados já cadastrados
+    ]*/}
 }
 
-export function showHistory(analyze) { 
+export function showHistory(analyze) {
     // buscar o cara que ta logado
-     if(analyze._id != undefined)
-     id = analyze._id;
+    if (analyze._id != undefined)
+        id = analyze._id;
     return [
-        console.log('Valor='+id),
+        console.log('Valor=' + id),
         searchAnalyze(id),
         showTabs('tabHistory'),
         selectTab('tabHistory'),
@@ -131,9 +150,9 @@ export function showNew() { //como vou linkar o id do usuário com o id_client ?
     ]
 }
 
-export function init(){
+export function init() {
     return [
-        showTabs('tabList','tabCreate'),
+        showTabs('tabList', 'tabCreate'),
         selectTab('tabList'),
         search(),
         initialize('analyzeForm', INITIAL_VALUES) //inicializar o formulário com dados já cadastrados

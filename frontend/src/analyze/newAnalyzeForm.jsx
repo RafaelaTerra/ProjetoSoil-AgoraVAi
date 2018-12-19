@@ -13,7 +13,7 @@ class NewAnalyzeForm extends Component {
       }
       
     render() {
-        console.log("newAnalyzeForm-Id",this.props.id)
+       // console.log("newAnalyzeForm-Id",this.props.id)
         const { handleSubmit, readOnly } = this.props //método do redux-form
          return(
             <form role='form' onSubmit={handleSubmit}>
@@ -28,25 +28,17 @@ class NewAnalyzeForm extends Component {
                         label='Parâmetro 4' cols='12 2' placeholder='Valor' />
                     <Field name='parameter5' component={labelAndInput} readOnly={readOnly}
                         label='Parâmetro 5' cols='12 2' placeholder='Valor' />
-                    {/* <Field name='points' component={labelAndInput} readOnly={readOnly}
-                        label='Pontos' cols='12 2' placeholder='Valor' /> */}
                     <Field name='id_client' type="hidden" component={labelAndInput} readOnly={readOnly}
                         cols='0' />
-                </div>
-<<<<<<< HEAD
-                     <button className='btn btn-success' onClick={() => this.props.showHistory(an)}>
-=======
-                {/*<button className='btn btn-success' onClick={() => this.props.showHistory(an)}>
->>>>>>> bbc250d058b60d82a0573fd4197643adb907cc64
+                 </div>  
+                    {/* <button className='btn btn-success' onClick={() => this.props.showHistory(an)}>
+                <button className='btn btn-success' onClick={() => this.props.showHistory(an)}>
                         <th>Avanço</th>
                         </button>
                     <button className='btn btn-danger' onClick={() => this.props.showHistory(an)}>
                         <th>Reverso</th>
-<<<<<<< HEAD
                     </button>      
-=======
                     </button>*/}          
->>>>>>> bbc250d058b60d82a0573fd4197643adb907cc64
                 <div className='box-footer'>
                     <button type='submit' className={`btn btn-${this.props.submitClass}`}>
                         {this.props.submitLabel}

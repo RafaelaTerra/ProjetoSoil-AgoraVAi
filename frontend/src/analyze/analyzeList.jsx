@@ -11,7 +11,6 @@ class AnalyzeList extends Component {
 
     renderRows() {
         const list = this.props.list || []
-        console.log("list", list)
         return list.map(an => (
              <tr key={an._id}>
              

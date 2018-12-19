@@ -8,7 +8,7 @@ class AnalyzeListHistory extends Component {
     renderRows() {
         const listHistory = this.props.listHistory || []
 
-        console.log("AnalyzeListHistory",listHistory)
+        //console.log("AnalyzeListHistory",listHistory)
         return listHistory.map(x => 
                 
             <tr key={x._id}>
