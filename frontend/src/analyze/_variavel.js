@@ -1,1 +1,0 @@
-const id_user_logado = "5c18036fba726721f09d942a";
